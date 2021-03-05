@@ -774,6 +774,25 @@ class _DeployedContractBase(_ContractBase):
                 f"'{self._name}.balance' is unavailable",
                 BrownieEnvironmentWarning,
             )
+        # BEP20s
+        elif name == "decimals":
+            warnings.warn(
+                f"'{self._name}' defines a 'decimals' function, "
+                f"'{self._name}.decimals' is unavailable",
+                BrownieEnvironmentWarning,
+            )
+        elif name == "name":
+            warnings.warn(
+                f"'{self._name}' defines a 'name' function, "
+                f"'{self._name}.name' is unavailable",
+                BrownieEnvironmentWarning,
+            )
+        elif name == "symbol":
+            warnings.warn(
+                f"'{self._name}' defines a 'symbol' function, "
+                f"'{self._name}.symbol' is unavailable",
+                BrownieEnvironmentWarning,
+            )
         elif hasattr(self, name):
             raise AttributeError(f"Namespace collision: '{self._name}.{name}'")
         setattr(self, name, obj)
